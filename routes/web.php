@@ -68,3 +68,31 @@ Route::get('/cat', function () {
 
     return view("test/cat", compact("cat"));
 });
+//  Week3
+Route::get("/teacher/inheritance", function () {
+    return view("teacher-inheritance");
+});
+Route::get("/student/inheritance", function () {
+    return view("student-inheritance");
+});
+Route::get("/theme", function () {
+    return view("theme");
+});
+
+// Route Template conponent
+Route::get("/teacher/component", function () {
+    return view("teacher-component");
+});
+Route::get("/student/component", function () {
+    return view("student-component");
+});
+
+
+Route::get('/tables', function () {
+    return view('tables');
+});
+
+
+Route::get("/Qtable/component", function () {
+    return view("Qtable-component");
+});
