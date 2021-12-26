@@ -7,10 +7,7 @@
         <p6>Ant</p6>
         <img src="{{ $ant }}" style="width:20%;">
     </a>
-    <a href="bird">
-        <p6>bird</p6>
-        <img src="{{ $bird }}" style="width:20%;">
-    </a>
+
     <a href="cat">
         <p6>cat</p6>
         <img src="{{ $cat }}" style="width:20%;">
