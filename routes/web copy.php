@@ -74,11 +74,6 @@ Route::get('/cat', function () {
     return view("test/cat", compact("cat"));
 });
 //  Week3
-Route::middleware(['auth','role:admin,teacher,manager'])->group(function () {
-    Route::get("/teacher", function () {
-        return view("teacher");
-    });
-});
 Route::get("/teacher/inheritance", function () {
     return view("teacher-inheritance");
 });
@@ -109,34 +104,28 @@ Route::get("/Qtable/component", function () {
 
 
 //WK4
-Route::get("/myprofile/create", [MyProfileController::class, "create"]);
-Route::get("/myprofile/{id}/edit", [MyProfileController::class, "edit"]);
-Route::get("/myprofile/{id}", [MyProfileController::class, "show"]);
+Route::get("/myprofile/create",[ MyProfileController::class , "create" ]);
+Route::get("/myprofile/{id}/edit", [ MyProfileController::class , "edit" ] );
+Route::get("/myprofile/{id}", [ MyProfileController::class , "show" ]);
 
-Route::get("/newgallery", [MyProfileController::class, "gallery"]);
-Route::get("/newgallery/ant", [MyProfileController::class, "ant"]);
-Route::get("/newgallery/cat", [MyProfileController::class, "cat"]);
+Route::get( "/newgallery" , [ MyProfileController::class , "gallery" ] );
+Route::get( "/newgallery/ant" , [ MyProfileController::class , "ant" ] );
+Route::get( "/newgallery/cat" , [ MyProfileController::class , "cat" ] );
 
 
 // WK5
-Route::get("/coronavirus", [MyProfileController::class, "coronavirus"]);
+Route::get( "/coronavirus" ,[ MyProfileController::class , "coronavirus" ] );
 // Route::get('/covid19', [ Covid19Controller::class,"index" ]);
 
 //Wk6 Covis19
-Route::get("/covid19/create", [Covid19Controller::class, "create"]);
-Route::get("/covid19/{id}/edit", [Covid19Controller::class, "edit"]);
-Route::get('/covid19', [Covid19Controller::class, 'index']);
-Route::get('/covid19/{id}', [Covid19Controller::class, 'show']);
-Route::post("/covid19", [Covid19Controller::class, "store"]);
-Route::patch("/covid19/{id}", [Covid19Controller::class, "update"]);
-Route::delete('/covid19/{id}', [Covid19Controller::class, 'destroy']);
+Route::get("/covid19/create",[ Covid19Controller::class , "create" ]);
+Route::get("/covid19/{id}/edit", [ Covid19Controller::class , "edit" ]);
+Route::get('/covid19', [ Covid19Controller::class, 'index' ]);
+Route::get('/covid19/{id}',[ Covid19Controller::class,'show' ]);
+Route::post("/covid19",[ Covid19Controller::class , "store" ]);
+Route::patch("/covid19/{id}", [ Covid19Controller::class , "update" ]);
+Route::delete('/covid19/{id}', [ Covid19Controller::class , 'destroy' ]);
 
 //WK 7
-Route::resource('/staff', StaffController::class);
+Route::resource('/staff', StaffController::class );
 Route::resource('post', PostController::class);
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
-require __DIR__ . '/auth.php';
