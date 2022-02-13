@@ -9,11 +9,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>{{ $title }}</title>
+    <title> {{ $title }} </title>
 
     <!-- Custom fonts for this template -->
-    <link href="{{ asset('vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css') }}">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i') }}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
@@ -48,6 +48,26 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
+            <!-- Nav Item - Dashboard -->
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url('/product') }}">
+            <i class="fa fa-home"></i> หน้าหลัก
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url('/order-product') }}">
+            <i class="fa fa-shopping-cart"></i> ตะกร้าของฉัน
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url('/order') }}">
+            <i class="fa fa-box"></i> คำสั่งซื้อของฉัน
+        </a>
+    </li>
+
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -352,7 +372,7 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                            {{ $slot }}
+                                {{ $slot }}
                             </div>
                         </div>
                     </div>
