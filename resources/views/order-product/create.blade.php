@@ -1,4 +1,4 @@
-<x-bootstrap-theme>
+<x-theme-tables title="">
 
     <div class="container">
         <div class="row">
@@ -33,4 +33,4 @@
         </div>
     </div>
 
-</x-bootstrap-theme>
+</x-theme-tables>
