@@ -22,15 +22,14 @@ class OrderController extends Controller
     {
         $keyword = $request->get('search');
         $perPage = 25;
-        switch(Auth::user()->role)
-        {
-            case "admin" : 
+        switch (Auth::user()->role) {
+            case "admin":
                 $order = Order::latest()->paginate($perPage);
                 break;
-            default : 
+            default:
                 //means guest
-                $order = Order::where('user_id',Auth::id() )->latest()->paginate($perPage);            
-        } 
+                $order = Order::where('user_id', Auth::id())->latest()->paginate($perPage);
+        }
 
         // if (!empty($keyword)) {
         //     $order = Order::where('user_id', 'LIKE', "%$keyword%")
@@ -135,6 +134,15 @@ class OrderController extends Controller
         $requestData = $request->all();
 
         $order = Order::findOrFail($id);
+        switch ($requestData['status']) {
+            case "paid":
+                $requestData['paid_at'] = date("Y-m-d H:i:s");
+                break;
+            case "completed":
+                $requestData['completed_at'] = date("Y-m-d H:i:s");
+                break;
+        }
+
         $order->update($requestData);
 
         return redirect('order')->with('flash_message', 'Order updated!');

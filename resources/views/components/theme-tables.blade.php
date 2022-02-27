@@ -50,23 +50,42 @@
             </li>
             <!-- Nav Item - Dashboard -->
 
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-    <li class="nav-item">
-        <a class="nav-link" href="{{ url('/product') }}">
-            <i class="fa fa-home"></i> หน้าหลัก
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{{ url('/order-product') }}">
-            <i class="fa fa-shopping-cart"></i> ตะกร้าของฉัน
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{{ url('/order') }}">
-            <i class="fa fa-box"></i> คำสั่งซื้อของฉัน
-        </a>
-    </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url('/product') }}">
+                    <i class="fa fa-home"></i> หน้าหลัก
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url('/order-product') }}">
+                    <i class="fa fa-shopping-cart"></i> ตะกร้าของฉัน
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url('/order') }}">
+                    <i class="fa fa-box"></i> คำสั่งซื้อของฉัน
+                </a>
+            </li>
+            @if(Auth::check())
+            @if(Auth::user()->role == "admin")
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" href="{{ url('/order-product/reportdaily') }}">
+                    <i class="fa fa-file"></i> รายงานรายวัน
+                </a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" href="{{ url('/order-product/reportmonthly') }}">
+                    <i class="fa fa-file"></i> รายงานรายเดือน
+                </a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" href="{{ url('/order-product/reportyearly') }}">
+                    <i class="fa fa-file"></i> รายงานรายปี
+                </a>
+            </li>
+            @endif
+            @endif
 
 
             <!-- Divider -->
