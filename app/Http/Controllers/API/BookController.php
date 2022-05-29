@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\API;
+
 use App\Models\Book;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -16,7 +17,6 @@ class BookController extends Controller
     {
         //
         return Book::get();
-
     }
 
     /**
@@ -29,6 +29,11 @@ class BookController extends Controller
     {
         //
         $requestData = $request->all();
+        if ($request->hasFile('image')) {
+            $filename = $request->file('image')->store('uploads', 'public');
+            $requestData['image'] = asset('storage/' . $filename);
+        }
+
         $item = Book::create($requestData);
         return ["success" => true, "data" => $item];
     }
@@ -55,6 +60,11 @@ class BookController extends Controller
     public function update(Request $request, $id)
     {
         $requestData = $request->all();
+        if ($request->hasFile('image')) {
+            $filename = $request->file('image')->store('uploads', 'public');
+            $requestData['image'] = asset('storage/'.$filename);
+        }
+    
         $item = Book::findOrFail($id);
         $success = $item->update($requestData);
         return ["success" => $success];
